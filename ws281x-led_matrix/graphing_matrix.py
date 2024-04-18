@@ -12,7 +12,7 @@ LEFT_BORDER = [0, 7, 14, 21, 28, 35, 42]  # First column of each row in 7x7
 #graphing_strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 
 
-#TODO LIST: Graph function, highlight x and y coordinates
+#TODO LIST: Graph function, highlight x and y coordinates shitty shit shit what the fuck
 
 matrix_size = 7
 # Create a list to represent the matrix, each entry starts with False
