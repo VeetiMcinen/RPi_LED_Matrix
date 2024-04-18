@@ -42,7 +42,7 @@ Contributions are welcome. Please fork the repository, make your changes, and su
 This project is released under the MIT License. See the `LICENSE` file for more details.
 
 ## Authors
-- **Veeti Mäkinen** - *Programming* - [YourGithubProfile](https://github.com/VeetiMcinen)
+- **Veeti Mäkinen** - *Programming* - [Github](https://github.com/VeetiMcinen)
 - **Aaro Aleksejev** - *Graphic design*
 ## Acknowledgments
 - Hat tip to anyone whose code was used.
