@@ -43,7 +43,7 @@ This will start the program, which listens for equation inputs and displays the 
 Contributions are welcome. Please fork the repository, make your changes, and submit a pull request.
 
 ## License
-This project is released under the MIT License. See the `LICENSE` file for more details.
+This project is released under the MIT License. See the [`LICENSE`](https://github.com/VeetiMcinen/RPi_LED_Matrix/blob/main/LICENSE.md) file for more details.
 
 ## Authors
 - **Veeti Mäkinen** - *Programming* - [Github](https://github.com/VeetiMcinen)
