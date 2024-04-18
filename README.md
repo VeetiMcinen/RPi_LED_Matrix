@@ -18,19 +18,21 @@ This project controls a 7x7 LED matrix display using a Python script to represen
 1. **Set up your Raspberry Pi**: Install the latest version of Raspberry Pi OS and ensure it has network connectivity.
 2. **Install Python**: Python 3.x is usually pre-installed on Raspberry Pi OS; verify this by running `python3 --version`.
 3. **Install rpi_ws281x Library**:
-   ```bash
+
+    ```bash
    sudo pip3 install rpi_ws281x
    ```
    
-4. **Connect the LED Matrix**: Connect the data input of your LED matrix to the designated GPIO pin on your Raspberry Pi. Please ensure your ground connections are secure and your power supply is good and connected.
+5. **Connect the LED Matrix**: Connect the data input of your LED matrix to the designated GPIO pin on your Raspberry Pi. Please ensure your ground connections are secure and your power supply is good and connected.
 
 ## Configuration
 Edit the Python script to match your hardware setup, specifically the `LED_PIN` variable to match the GPIO pin connected to the LED matrix.
 
 ## Usage
 Run the script with:
+Configure the functions you wish to draw in main and then run the file with
 ```bash
-python3 led_matrix.py
+python3 main.py
 ```
 
 This will start the program, which listens for equation inputs and displays the results dynamically on the LED matrix.
@@ -44,7 +46,6 @@ This project is released under the MIT License. See the `LICENSE` file for more 
 ## Authors
 - **Veeti Mäkinen** - *Programming* - [Github](https://github.com/VeetiMcinen)
 - **Aaro Aleksejev** - *Graphic design*
+
 ## Acknowledgments
-- Hat tip to anyone whose code was used.
-- Inspiration.
-- etc.
+- Kampf Group
