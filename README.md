@@ -32,8 +32,7 @@ This project also supports drawing numbers and numbers individually from the ```
 Edit the Python script to match your hardware setup, specifically the `LED_PIN` variable to match the GPIO pin connected to the LED matrix.
 
 ## Usage
-Run the script with:
-Configure the functions you wish to draw in main and then run the file with
+Configure the functions and characters you wish to draw in ```main.py``` and then run the file with
 ```bash
 python3 main.py
 ```
