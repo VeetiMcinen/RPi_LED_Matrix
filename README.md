@@ -4,6 +4,9 @@
 ## Project Overview
 This project controls a 7x7 LED matrix display using a Python script to represent mathematical equations visually. The LEDs can be individually controlled to display the output of an equation graphed across a defined coordinate system ranging from -3 to 3 on both the x and y axes.
 
+This project also supports drawing numbers and numbers individually from the ```bash drawings.py ``` file with the function being defined in ```bash led_matrix_animation.py ```
+
+
 ## Hardware Requirements
 - **Raspberry Pi**: Any model that supports Python and GPIO pin output.
 - **7x7 LED Matrix**: WS281x LED strip configured in a 7x7 matrix.
