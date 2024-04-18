@@ -1,7 +1,7 @@
 from rpi_ws281x import Color #type: ignore
 import time
 import random
-from strip_definition import strip, led_matrix
+from strip_definition import strip, graphing_matrix
 
 # LED module configuration:
 
@@ -38,9 +38,9 @@ def draw(character, strip=strip, set_color=False, shuffle_animation=False, rever
     if wait_time == 0:
         strip.show()
 
+def map_coordinates(matrix=graphing_matrix):
+    pass
 def graph_function(equation, strip=strip):
-    default_coordinates = [(0,7),(1,7),(2,7),(3,7),(4,7),(5,7),
-                           (6,7),(7,7),(7,0),(7,1),(7,2),(7,3),
-                           (7,4),(7,5),(7,6),(7,7)]
+    pass
 
 strip.begin()
