@@ -9,10 +9,41 @@ LED_CHANNEL = 0  # set to '1' for GPIOs 13, 19, 41, 45 or 53, otherwise '0'
 # Define borders based on a 0-indexed system for a 7x7 matrix
 RIGHT_BORDER = [6, 13, 20, 27, 34, 41, 48]  # Last column of each row in 7x7
 LEFT_BORDER = [0, 7, 14, 21, 28, 35, 42]  # First column of each row in 7x7
-#graphing_strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+#graphing_strip = Pixelstrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 
 
-#TODO LIST: Graph function, highlight x and y coordinates
+#TODO LIST: impliment render function into strip, highlight x and y coordinates, clearstrip,
+
+
+def render(equation:str):
+    pixels_to_render = []
+    
+    def evaluate_equation(x):
+        # Evaluate the equation safely with error handling
+        try:
+            result = eval(equation)
+            return result
+        except Exception as e:
+            print(f"Error evaluating equation: {e}")
+            return None  # Return None if there's an error
+
+    for x in range(-3, 4):
+        y = evaluate_equation(x)
+        if y is not None and -3 <= y <= 3:  # Ensure y is within the valid range
+            result_index = (3 - y) * matrix_size + (x + 3)
+            if 0 <= result_index < len(led_matrix):  # Check index bounds
+                led_matrix[result_index] = True  # Set the LED state to True
+                # Update the corresponding entry in the 'coordinates' list
+                for coord in coordinates:
+                    if coord[2] == result_index:
+                        coord[3] = True  # Update the state
+
+    # Collect all turned on LED coordinates
+    for coordinate in coordinates:
+        if coordinate[3]:
+            pixels_to_render.append((coordinate[0], coordinate[1]))  # Append as a tuple
+
+    return pixels_to_render
 
 matrix_size = 7
 # Create a list to represent the matrix, each entry starts with False
@@ -27,22 +58,8 @@ for y in range(3, -4, -1):  # y starts at 3 and decreases to -3
         # Append the coordinate along with its initial state (False) and its index
         coordinates.append([x, y, index, False])  # Include the boolean value as the fourth element
 
-# Optional: Print to check the mapping and initial states
 
-# Example of how to update a specific LED state
-# If you want to turn on the LED at coordinate (0, 0) which corresponds to the center of the matrix
-x_coordinate = 0
-y_coordinate = 0
-center_index = (3 - x_coordinate) * matrix_size + (y_coordinate + 3)
-led_matrix[center_index] = True  # Set the LED state to True in the 1D representation
-
-# Update the corresponding entry in the 'coordinates' list
-print(center_index)
-for coord in coordinates:
-    if coord[2] == center_index:
-        coord[3] = True  # Update the state in the structured list
+equation = "3*x"
+print(render(equation))
 
 
-for coordinate in coordinates:
-    if coordinate[3]:
-        print(f"({coordinate[0]}, {coordinate[1]})")
