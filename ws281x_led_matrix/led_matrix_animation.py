@@ -38,9 +38,4 @@ def draw(character, strip=strip, set_color=False, shuffle_animation=False, rever
     if wait_time == 0:
         strip.show()
 
-def map_coordinates(matrix=graphing_matrix):
-    pass
-def graph_function(equation, strip=strip):
-    pass
-
 strip.begin()
