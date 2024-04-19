@@ -59,7 +59,7 @@ for y in range(3, -4, -1):  # y starts at 3 and decreases to -3
         coordinates.append([x, y, index, False])  # Include the boolean value as the fourth element
 
 
-equation = "3*x"
+equation = "x"
 print(render(equation))
 
 
