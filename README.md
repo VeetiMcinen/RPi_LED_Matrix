@@ -50,4 +50,4 @@ This project is released under the MIT License. See the [`LICENSE`](https://gith
 - **Aaro Aleksejev** - *Graphic design*
 
 ## Acknowledgments
-- Kampf Group
+- Kampf
