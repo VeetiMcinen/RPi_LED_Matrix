@@ -1,7 +1,7 @@
 from rpi_ws281x import Color #type: ignore
 import time
 import random
-from strip_definition import strip, graphing_matrix
+from strip_definition import strip
 
 # LED module configuration:
 
