@@ -1,34 +1,21 @@
-from rpi_ws281x import PixelStrip, Color
-import random
-
-# LED matrix and strip configuration
-LED_COUNT = 64  # Total number of LEDs in an 8x8 matrix
+#from rpi_ws281x import PixelStrip, Color
+LED_COUNT = 49  # Total number of LEDs in a 7x7 matrix
 LED_PIN = 12  # GPIO pin connected to the pixels (must support PWM)
 LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800kHz)
-LED_DMA = 10  # DMA channel to use for generating signal
+LED_DMA = 10  # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 15  # Set to 0 for darkest and 255 for brightest
 LED_INVERT = False  # True to invert the signal (when using NPN transistor level shift)
-LED_CHANNEL = 0  # Set to '1' for GPIOs 13, 19, 41, 45 or 53, otherwise '0'
+LED_CHANNEL = 0  # set to '1' for GPIOs 13, 19, 41, 45 or 53, otherwise '0'
+# Define borders based on a 0-indexed system for a 7x7 matrix
+RIGHT_BORDER = [6, 13, 20, 27, 34, 41, 48]  # Last column of each row in 7x7
+LEFT_BORDER = [0, 7, 14, 21, 28, 35, 42]  # First column of each row in 7x7
+#graphing_strip = Pixelstrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 
-# Initialize the LED strip
-strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-strip.begin()
 
-# Matrix dimensions for the physical LED matrix
-full_matrix_size = 8  # 8x8 physical matrix
-adjusted_matrix_size = 7  # Logical operation within 7x7 matrix
+#TODO LIST: impliment render function into strip, highlight x and y coordinates, clearstrip,
 
-# Create a list to represent the matrix, initializing all to False
-led_matrix = [False] * (full_matrix_size * full_matrix_size)
 
-# Generate coordinates and corresponding indices
-coordinates = []
-for y in range(-3, 4):  # Logical y-coordinates
-    for x in range(-3, 4):  # Logical x-coordinates
-        index = (y + 3) * full_matrix_size + (x + 3)
-        coordinates.append([x, y, index, False])  # Include x, y, index, and initial state (False)
-
-def calculate(equation, strip):
+def render(equation:str):
     pixels_to_render = []
 
     def evaluate_equation(x):
@@ -51,11 +38,28 @@ def calculate(equation, strip):
                     if coord[2] == index:
                         coord[3] = True  # Update the state
 
-    strip.show()
-    return [(c[0], c[1], c[2]) for c in coordinates if c[3]]  # Collect all turned on LED coordinates
+    # Collect all turned on LED coordinates
+    for coordinate in coordinates:
+        if coordinate[3]:
+            pixels_to_render.append((coordinate[0], coordinate[1]))  # Append as a tuple
 
-# Example usage
-print(calculate("(x**2)", strip))
+    return pixels_to_render
 
-def random_color():
-    return Color(random.randrange(0, 255, 15), random.randrange(0, 255, 15), random.randrange(0, 255, 15))
+matrix_size = 7
+# Create a list to represent the matrix, each entry starts with False
+led_matrix = [False] * (matrix_size * matrix_size)
+
+# Generate coordinates for y from 3 to -3 (inclusive)
+coordinates = []
+for y in range(3, -4, -1):  # y starts at 3 and decreases to -3
+    for x in range(-3, 4):  # x starts at -3 and increases to 3
+        # Calculate the index for the 1D list
+        index = (3 - y) * matrix_size + (x + 3)
+        # Append the coordinate along with its initial state (False) and its index
+        coordinates.append([x, y, index, False])  # Include the boolean value as the fourth element
+
+
+equation = "3*x"
+print(render(equation))
+
+
