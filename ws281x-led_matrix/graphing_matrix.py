@@ -1,15 +1,6 @@
 #from rpi_ws281x import PixelStrip, Color
-LED_COUNT = 49  # Total number of LEDs in a 7x7 matrix
-LED_PIN = 12  # GPIO pin connected to the pixels (must support PWM)
-LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800kHz)
-LED_DMA = 10  # DMA channel to use for generating signal (try 10)
-LED_BRIGHTNESS = 15  # Set to 0 for darkest and 255 for brightest
-LED_INVERT = False  # True to invert the signal (when using NPN transistor level shift)
-LED_CHANNEL = 0  # set to '1' for GPIOs 13, 19, 41, 45 or 53, otherwise '0'
-# Define borders based on a 0-indexed system for a 7x7 matrix
-RIGHT_BORDER = [6, 13, 20, 27, 34, 41, 48]  # Last column of each row in 7x7
-LEFT_BORDER = [0, 7, 14, 21, 28, 35, 42]  # First column of each row in 7x7
-#graphing_strip = Pixelstrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+
+#from strip_definition import graphing_strip  
 
 
 #TODO LIST: impliment render function into strip, highlight x and y coordinates, clearstrip,
@@ -59,7 +50,7 @@ for y in range(3, -4, -1):  # y starts at 3 and decreases to -3
         coordinates.append([x, y, index, False])  # Include the boolean value as the fourth element
 
 
-equation = "3*x"
+equation = "abs(x)-3"
 print(render(equation))
 
 
