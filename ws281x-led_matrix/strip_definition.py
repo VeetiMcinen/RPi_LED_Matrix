@@ -19,7 +19,7 @@ GRAPHING_LED_CHANNEL = 0  # set to '1' for GPIOs 13, 19, 41, 45 or 53, otherwise
 # Define borders based on a 0-indexed system for a 7x7 matrix
 GRAPHING_RIGHT_BORDER = [6, 13, 20, 27, 34, 41, 48]  # Last column of each row in 7x7
 GRAPHING_LEFT_BORDER = [0, 7, 14, 21, 28, 35, 42]
-character_matrix = [[False for _ in range(8)] for _ in range(8)]
+
 strip = PixelStrip(LED_COUNT, 
                    LED_PIN, 
                    LED_FREQ_HZ, 

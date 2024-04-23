@@ -15,7 +15,13 @@ def clearstrip():
         strip.setPixelColor(counter, Color(0, 0, 0))
     strip.show()
 
-def draw(character, strip=strip, set_color=False, shuffle_animation=False, reverse_animation=False, wait_time=0):
+def draw(character, 
+         strip=strip, 
+         set_color=False, 
+         shuffle_animation=False, 
+         reverse_animation=False, 
+         wait_time=0):
+    
     clearstrip()  # Ensure the strip is cleared before setting new pixels
     colors = set_color if set_color else randomcolor()
 
